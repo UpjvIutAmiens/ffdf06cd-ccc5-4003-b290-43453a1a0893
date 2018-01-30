@@ -20,7 +20,16 @@ namespace Commandes
             l1.prixUnitaire = 1.3;
             l1.quantite = 10;
 
+            // Second objet avec une autre syntaxe
+            LigneCmd l2 = new LigneCmd()
+            {
+                designation = "Crayon",
+                prixUnitaire = 0.21,
+                quantite = 100
+            };
+
             Console.WriteLine("L1 : " + l1.Description());
+            Console.WriteLine("L2 : " + l2.Description());
             Console.WriteLine("Press a key");
             Console.ReadKey();
         }
