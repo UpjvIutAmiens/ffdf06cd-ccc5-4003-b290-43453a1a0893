@@ -42,7 +42,21 @@ namespace Commande
             }
         }
 
-        public double Quantite { get; set; }
+        public double Quantite
+        {
+            get { return _quantite; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException($"Quantité négative : {value}");
+                }
+                else
+                {
+                    _quantite = value;
+                }
+            }
+        }
 
         public double montant()
         {
