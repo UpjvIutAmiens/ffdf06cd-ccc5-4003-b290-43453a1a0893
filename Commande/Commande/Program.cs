@@ -29,8 +29,17 @@ namespace Commande
                 quantite = 5
             };
 
+            // Problème avec cet objet
+            LigneCmd l3 = new LigneCmd()
+            {
+                designation = "Bureau",
+                prixUnitaire = -1000,
+                quantite = 50
+            };
+
             Console.WriteLine(l1.Description());
             Console.WriteLine(l2.Description());
+            Console.WriteLine(l3.Description());
         }
     }
 }

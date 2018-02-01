@@ -6,10 +6,15 @@
         public double prixUnitaire;
         public double quantite;
 
+        public double montant()
+        {
+            return quantite * prixUnitaire;
+        }
+
         public string Description()
         {
             return
-                $"{designation} pu:{prixUnitaire:C}, qt:{quantite}";
+                $"{designation} pu:{prixUnitaire:C}, qt:{quantite}, mnt:{montant():C}";
         }
     }
 }
