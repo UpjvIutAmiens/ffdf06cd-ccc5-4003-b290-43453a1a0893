@@ -32,8 +32,8 @@ namespace Commande
                     // Gestion des erreurs par une "exception"
                     // throw lève une exception
                     // L'exception est ArgumentOutOfRange qui est explicite
-                    // pour note cas
-                    throw new ArgumentOutOfRangeException();
+                    // pour notre cas
+                    throw new ArgumentOutOfRangeException($"Prix unitaire négatif : {value}");
                 }
                 else
                 {
