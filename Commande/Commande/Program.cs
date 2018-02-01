@@ -33,7 +33,7 @@ namespace Commande
             LigneCmd l3 = new LigneCmd()
             {
                 Designation = "Bureau",
-                PrixUnitaire = -1000,
+                PrixUnitaire = 1000,
                 Quantite = 50
             };
 

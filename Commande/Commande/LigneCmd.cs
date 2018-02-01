@@ -58,15 +58,16 @@ namespace Commande
             }
         }
 
-        public double montant()
+        public double Montant
         {
-            return Quantite * PrixUnitaire;
+            // Proriété en lecture seul puisque pas de "set"
+            get {return  Quantite * PrixUnitaire;}
         }
 
         public string Description()
         {
             return
-                $"{Designation} pu:{PrixUnitaire:C}, qt:{Quantite}, mnt:{montant():C}";
+                $"{Designation} pu:{PrixUnitaire:C}, qt:{Quantite}, mnt:{Montant:C}";
         }
     }
 }
