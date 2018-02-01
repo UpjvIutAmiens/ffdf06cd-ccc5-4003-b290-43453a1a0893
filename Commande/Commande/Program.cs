@@ -18,23 +18,23 @@ namespace Commande
             // de la référence dans l1
             l1 = new LigneCmd();
 
-            l1.designation = "gomme";
-            l1.prixUnitaire = 1.3;
-            l1.quantite = 10;
+            l1.Designation = "gomme";
+            l1.PrixUnitaire = 1.3;
+            l1.Quantite = 10;
 
             LigneCmd l2 = new LigneCmd()
             {
-                designation = "Crayon",
-                prixUnitaire = 0.2,
-                quantite = 5
+                Designation = "Crayon",
+                PrixUnitaire = 0.2,
+                Quantite = 5
             };
 
             // Problème avec cet objet
             LigneCmd l3 = new LigneCmd()
             {
-                designation = "Bureau",
-                prixUnitaire = -1000,
-                quantite = 50
+                Designation = "Bureau",
+                PrixUnitaire = -1000,
+                Quantite = 50
             };
 
             Console.WriteLine(l1.Description());
