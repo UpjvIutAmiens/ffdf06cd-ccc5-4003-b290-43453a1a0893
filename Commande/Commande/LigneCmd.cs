@@ -9,7 +9,7 @@
         public string Description()
         {
             return
-                $"{designation} pu:{prixUnitaire}, qt:{quantite}";
+                $"{designation} pu:{prixUnitaire:C}, qt:{quantite}";
         }
     }
 }

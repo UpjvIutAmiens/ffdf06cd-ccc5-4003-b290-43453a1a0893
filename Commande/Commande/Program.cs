@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Commande
 {
@@ -6,6 +7,9 @@ namespace Commande
     {
         static void Main(string[] args)
         {
+            // Passer la console en UTF-8 pour le symbole Euro
+            Console.OutputEncoding = Encoding.UTF8;
+
             // Déclaration d'une référence capable de pointer vers un
             // objet de type LigneCmd
             LigneCmd l1;
@@ -18,7 +22,15 @@ namespace Commande
             l1.prixUnitaire = 1.3;
             l1.quantite = 10;
 
+            LigneCmd l2 = new LigneCmd()
+            {
+                designation = "Crayon",
+                prixUnitaire = 0.2,
+                quantite = 5
+            };
+
             Console.WriteLine(l1.Description());
+            Console.WriteLine(l2.Description());
         }
     }
 }
