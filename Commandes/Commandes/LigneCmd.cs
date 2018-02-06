@@ -23,10 +23,11 @@
             set
             {
                 // La donnée à stocker se trouve dans la variable
-                // value (pas besoinn de déclarer)
+                // value (pas besoin de déclarer)
                 if (value < 0)
                 {
-                    System.Console.WriteLine("Erreur");
+                    // throw lève une exception
+                    throw new System.ArgumentOutOfRangeException($"pu négatif {value}");
                 } else
                 {
                     _prixUnitaire = value;
@@ -63,7 +64,7 @@
         // méthodes
         public string Description()
         {
-            return $"{designation}, pu:{prixUnitaire}, qt:{quantite}";
+            return $"{Designation}, pu:{PrixUnitaire}, qt:{Quantite}";
         }
     }
 }
