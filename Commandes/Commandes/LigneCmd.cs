@@ -9,6 +9,15 @@
         private double _quantite;
         private double _prixUnitaire;
         
+        // Constructeurs
+        // Il a le même nom que la classe. Il n'a pas de type de retour
+        // Pas de majuscule pour les paramètres
+        public LigneCmd(string designation, double quantite, double prixUnitaire)
+        {
+            Designation = designation;
+            PrixUnitaire = prixUnitaire;
+            Quantite = quantite;
+        }
 
         // Propriétés
         // Convention d'écriture : commence par une majuscule

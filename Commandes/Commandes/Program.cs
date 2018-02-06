@@ -14,25 +14,18 @@ namespace Commandes
             LigneCmd l1;
 
             // Création d'un objet LigneCmd référencé par l1
-            l1 = new LigneCmd();
+            l1 = new LigneCmd("Gomme", 10, 1.3);
 
-            l1.Designation = "Gomme";
-            l1.PrixUnitaire = 1.3;
-            l1.Quantite = 10;
 
             // Second objet avec une autre syntaxe
-            LigneCmd l2 = new LigneCmd()
-            {
-                Designation = "Crayon",
-                PrixUnitaire = 0.21,
-                Quantite = 100
-            };
+            LigneCmd l2 = new LigneCmd(
+                quantite: 100,
+                designation: "Crayon",
+                prixUnitaire: 0.21
+                
+            );
 
-            LigneCmd l3 = new LigneCmd();
-
-            l3.Designation = "Bureau";
-            l3.PrixUnitaire = -1000;
-            l3.Quantite = 50;
+            LigneCmd l3 = new LigneCmd("Bureau", 50, 1000);
 
 
             Console.WriteLine("L1 : " + l1.Description());
