@@ -70,10 +70,18 @@
             }
         }
 
+        public double Montant
+        {
+            get
+            {
+                return Quantite * PrixUnitaire;
+            }
+        }
+
         // méthodes
         public string Description()
         {
-            return $"{Designation}, pu:{PrixUnitaire}, qt:{Quantite}";
+            return $"{Designation}, pu:{PrixUnitaire}, qt:{Quantite}, mnt:{Montant}";
         }
     }
 }
