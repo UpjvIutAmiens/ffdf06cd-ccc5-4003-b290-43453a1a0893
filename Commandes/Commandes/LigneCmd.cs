@@ -44,6 +44,7 @@
 
             set
             {
+
                 _designation = value;
             }
         }
@@ -57,7 +58,15 @@
 
             set
             {
-                _quantite = value;
+                if (value < 0)
+                {
+                    // throw lève une exception
+                    throw new System.ArgumentOutOfRangeException($"qt négatif {value}");
+                }
+                else
+                {
+                    _quantite = value;
+                }
             }
         }
 
