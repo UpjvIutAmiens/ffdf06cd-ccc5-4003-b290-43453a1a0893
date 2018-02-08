@@ -11,6 +11,10 @@ namespace Etudiant
             etud1.DateNaissance = new DateTime(2001, 03, 16);
 
             System.Console.WriteLine(etud1.Description());
+
+
+            Etudiant etud2 = new Etudiant("Composé", "jEan-clAuDe");
+            System.Console.WriteLine(etud2.Description());
         }
     }
 }

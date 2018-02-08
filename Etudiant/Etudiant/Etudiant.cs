@@ -32,7 +32,11 @@ namespace Etudiant
         {
             get { return _prenom; }
 
-            set { _prenom = value; }
+            set
+            {
+                TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+                _prenom = ti.ToTitleCase(value);
+            }
         }
 
         public string Login
