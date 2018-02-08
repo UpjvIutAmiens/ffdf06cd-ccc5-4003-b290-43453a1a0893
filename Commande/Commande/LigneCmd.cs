@@ -11,6 +11,16 @@ namespace Commande
         private double _prixUnitaire;
         private double _quantite;
 
+        // Le constructeur est une méthode (une fonction) appellée au moment
+        // de la création de l'objet.
+        // Il a le même nom que la classe et il n'a pas de type de retour
+        public LigneCmd(string designation, double quantite, double prixUnitaire)
+        {
+            Designation = designation;
+            Quantite = quantite;
+            PrixUnitaire = prixUnitaire;
+        }
+
         // Les propriétés "filtrent" les accès aux champs
         // Les propriétés public commencent par une majuscule
         public string Designation
