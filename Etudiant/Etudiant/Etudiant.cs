@@ -55,6 +55,15 @@ namespace Etudiant
 
             StringBuilder result =new StringBuilder();
             result.Append($"{Nom} {Prenom}");
+
+            // Ajout de la date de naissance uniquement si elle est renseignée
+            if (DateNaissance != null)
+            {
+                // Formats
+                // https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings
+                // https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings
+                result.Append($" dn:{DateNaissance:ddd d MMM yyyy}");
+            }
             return result.ToString();
         }
     }
