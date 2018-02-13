@@ -29,7 +29,17 @@ namespace Etudiant
         {
             get { return _nom; }
 
-            set { _nom = value.ToUpper(); }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new System.ArgumentException("Le nom n'est pas renseigné");
+                }
+                else
+                {
+                    _nom = value.ToUpper();
+                }
+            }
         }
 
         public string Prenom
@@ -38,8 +48,16 @@ namespace Etudiant
 
             set
             {
-                TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
-                _prenom = ti.ToTitleCase(value);
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new System.ArgumentException("Le prénom n'est pas renseigné");
+                }
+                else
+                {
+                    TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+
+                    _prenom = ti.ToTitleCase(value.ToLower());
+                }
             }
         }
 
@@ -57,12 +75,13 @@ namespace Etudiant
             set { _dateNaissance = value; }
         }
 
-        public string Age {
+        public string Age
+        {
             get
             {
                 if (DateNaissance != null)
                 {
-                    DateTime d = (DateTime) DateNaissance;
+                    DateTime d = (DateTime)DateNaissance;
                     return calculAge(d);
                 }
 
@@ -126,7 +145,7 @@ namespace Etudiant
         {
             // L'objet StringBuilder optimise les concaténations et la gestion de la mémoire
 
-            StringBuilder result =new StringBuilder();
+            StringBuilder result = new StringBuilder();
             result.Append($"{Nom} {Prenom}");
 
             // Ajout de la date de naissance uniquement si elle est renseignée
