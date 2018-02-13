@@ -57,31 +57,70 @@ namespace Etudiant
             set { _dateNaissance = value; }
         }
 
-        public double Age {
+        public string Age {
             get
             {
                 if (DateNaissance != null)
                 {
-                    return calculAge();
+                    DateTime d = (DateTime) DateNaissance;
+                    return calculAge(d);
                 }
 
                 throw new ArgumentNullException();
             }
         }
 
-        private double calculAge()
+        private string calculAge(DateTime dateNaissance)
         {
-            // (DateTime.Now - dateNaissance) renvoie un objet TimeSpan (intervalle de temps)
-            // TotalDays récupère l'intervalle en jours avec un partie fractionnaire.
-            // On divise par 365.25 pour récupérer le nombre d'année approximative 
-            //     en tenant compte des années bissextiles.
-            if (DateNaissance != null)
+            StringBuilder result = new StringBuilder();
+            DateTime now = DateTime.Now;
+
+            int days = now.Day - dateNaissance.Day;
+            if (days < 0)
             {
-                DateTime d = (DateTime) DateNaissance;
-                return (DateTime.Now - d).TotalDays / 365.25;
+                var newNow = now.AddMonths(-1);
+                days += (int)(now - newNow).TotalDays;
+                now = newNow;
             }
-            throw new ArgumentNullException();
+
+
+            int months = now.Month - dateNaissance.Month;
+            if (months < 0)
+            {
+                months += 12;
+                now = now.AddYears(-1);
+            }
+
+            int years = now.Year - dateNaissance.Year;
+
+            if (years > 0)
+            {
+                result.AppendFormat("{0} ans", years);
+            }
+
+            if (months > 0)
+            {
+                if (result.Length > 0)
+                {
+                    result.Append(" et ");
+                }
+
+                result.AppendFormat("{0} mois", months);
+            }
+
+            if (days > 0)
+            {
+                if (result.Length > 0)
+                {
+                    result.Append(" et ");
+                }
+                result.AppendFormat("{0} jour(s)", days);
+            }
+
+            return result.ToString();
         }
+
+
 
         public string Description()
         {
@@ -97,7 +136,7 @@ namespace Etudiant
                 // https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings
                 // https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings
                 result.Append($", dn:{DateNaissance:ddd d MMM yyyy}");
-                result.Append($", age:{Age:0.00}");
+                result.Append($", age:{Age}");
             }
             return result.ToString();
         }
