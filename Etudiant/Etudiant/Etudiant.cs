@@ -10,7 +10,9 @@ namespace Etudiant
         private string _nom;
         private string _prenom;
         private string _login;
-        private DateTime _dateNaissance;
+        // Le point d'interrogation indique qu'on
+        // peut affecter une valeur "null" à _dateNaissance (DateTime est une structure, pas une classe)
+        private DateTime? _dateNaissance = null;
 
         // Les constructeurs
         public Etudiant(string nom, string prenom)
@@ -46,7 +48,7 @@ namespace Etudiant
             set { _login = value.ToLower(); }
         }
 
-        public DateTime DateNaissance
+        public DateTime? DateNaissance
         {
             get { return _dateNaissance; }
 
