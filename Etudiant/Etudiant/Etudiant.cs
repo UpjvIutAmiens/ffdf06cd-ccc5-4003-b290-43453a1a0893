@@ -6,10 +6,12 @@ namespace Etudiant
 {
     class Etudiant
     {
+        // Constantes
+        private const int TailleMaxNomLogin = 10;
+
         // Les champs
         private string _nom;
         private string _prenom;
-
         private string _login;
 
         // Le point d'interrogation indique qu'on
@@ -22,6 +24,9 @@ namespace Etudiant
             // Initialisation des champs
             Nom = nom;
             Prenom = prenom;
+
+            Login = defaultLogin();
+
         }
 
         // Les propriétés
@@ -139,6 +144,21 @@ namespace Etudiant
             return result.ToString();
         }
 
+        private string defaultLogin()
+        {
+            StringBuilder sb = new StringBuilder();
+            int size = Nom.Length;
+
+            if (size > TailleMaxNomLogin)
+            {
+                size = TailleMaxNomLogin;
+            }
+
+            sb.Append(Nom.Substring(0, size));
+            sb.Append(Prenom.Substring(0, 1));
+
+            return sb.ToString().ToLower();
+        }
 
 
         public string Description()
@@ -157,6 +177,12 @@ namespace Etudiant
                 result.Append($", dn:{DateNaissance:ddd d MMM yyyy}");
                 result.Append($", age:{Age}");
             }
+
+            if (string.IsNullOrWhiteSpace(Login))
+            {
+                result.Append($", login:{Login}");
+            }
+
             return result.ToString();
         }
     }
