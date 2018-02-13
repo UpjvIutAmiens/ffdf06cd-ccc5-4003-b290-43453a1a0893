@@ -9,7 +9,9 @@ namespace Etudiant
         // Les champs
         private string _nom;
         private string _prenom;
+
         private string _login;
+
         // Le point d'interrogation indique qu'on
         // peut affecter une valeur "null" à _dateNaissance (DateTime est une structure, pas une classe)
         private DateTime? _dateNaissance = null;
@@ -55,7 +57,21 @@ namespace Etudiant
             set { _dateNaissance = value; }
         }
 
-        public string Description()
+        public double Age {
+            get
+            {
+                if (DateNaissance != null)
+                {
+                    DateTime d = (DateTime) DateNaissance;
+
+                    return DateTime.Now.Year - d.Year;
+                }
+
+                throw new ArgumentNullException();
+            }
+        }
+
+    public string Description()
         {
             // L'objet StringBuilder optimise les concaténations et la gestion de la mémoire
 
@@ -69,6 +85,7 @@ namespace Etudiant
                 // https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings
                 // https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings
                 result.Append($" dn:{DateNaissance:ddd d MMM yyyy}");
+                result.Append($" age:{Age}");
             }
             return result.ToString();
         }
