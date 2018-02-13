@@ -62,16 +62,28 @@ namespace Etudiant
             {
                 if (DateNaissance != null)
                 {
-                    DateTime d = (DateTime) DateNaissance;
-
-                    return DateTime.Now.Year - d.Year;
+                    return calculAge();
                 }
 
                 throw new ArgumentNullException();
             }
         }
 
-    public string Description()
+        private double calculAge()
+        {
+            // (DateTime.Now - dateNaissance) renvoie un objet TimeSpan (intervalle de temps)
+            // TotalDays récupère l'intervalle en jours avec un partie fractionnaire.
+            // On divise par 365.25 pour récupérer le nombre d'année approximative 
+            //     en tenant compte des années bissextiles.
+            if (DateNaissance != null)
+            {
+                DateTime d = (DateTime) DateNaissance;
+                return (DateTime.Now - d).TotalDays / 365.25;
+            }
+            throw new ArgumentNullException();
+        }
+
+        public string Description()
         {
             // L'objet StringBuilder optimise les concaténations et la gestion de la mémoire
 
@@ -84,8 +96,8 @@ namespace Etudiant
                 // Formats
                 // https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings
                 // https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings
-                result.Append($" dn:{DateNaissance:ddd d MMM yyyy}");
-                result.Append($" age:{Age}");
+                result.Append($", dn:{DateNaissance:ddd d MMM yyyy}");
+                result.Append($", age:{Age:0.00}");
             }
             return result.ToString();
         }
