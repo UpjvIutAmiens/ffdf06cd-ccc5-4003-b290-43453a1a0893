@@ -24,22 +24,28 @@ namespace Complexe
 
         public Complexe(double partieReelle, double partieImaginaire)
         {
-            this._partieReelle = partieReelle;
+            this.PartieReelle = partieReelle;
+            this.PartieImaginaire = partieImaginaire;
         }
 
         public Complexe Plus(Complexe c)               //La méthode retourne un objet (référence)
         {
             double relle, imaginaire;
-            relle = this._partieReelle + c._partieReelle;
-            imaginaire = this._partieImaginaire + c._partieImaginaire;
+            relle = this.PartieReelle + c.PartieReelle;
+            imaginaire = this.PartieImaginaire + c.PartieImaginaire;
 
             Complexe rs = new Complexe(relle, imaginaire);
-            return ;
+            return rs;
         }
 
         public Complexe Moins(Complexe c)                //La méthode retourne un objet (référence)
         {
+            double relle, imaginaire;
+            relle = this.PartieReelle - c.PartieReelle;
+            imaginaire = this.PartieImaginaire - c.PartieImaginaire;
 
+            Complexe rs = new Complexe(relle, imaginaire);
+            return rs;
         }
 
         public string Afficher()

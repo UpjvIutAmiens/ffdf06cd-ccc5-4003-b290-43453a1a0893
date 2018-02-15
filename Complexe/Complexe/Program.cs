@@ -28,8 +28,9 @@ namespace Complexe
 
             Console.Out.WriteLine("\n");
             Console.Out.WriteLine("La somme: ");
-            Complexe c3 = c1.Plus();      //L'objet C3 est construit et sa référence est retournée par la méthode Plus
+            Complexe c3 = c1.Plus(c2);      //L'objet C3 est construit et sa référence est retournée par la méthode Plus
             Console.WriteLine(c3.Afficher());
+
 
 
             Console.Out.WriteLine("\n");
