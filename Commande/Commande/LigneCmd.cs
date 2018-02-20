@@ -79,5 +79,11 @@ namespace Commande
             return
                 $"{Designation} pu:{PrixUnitaire:C}, qt:{Quantite}, mnt:{Montant:C}";
         }
+
+        public string DescriptionSimple()
+        {
+            return
+                $"{Designation} ({PrixUnitaire:C})";
+        }
     }
 }

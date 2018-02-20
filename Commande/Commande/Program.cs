@@ -7,29 +7,82 @@ namespace Commande
     {
         static void Main(string[] args)
         {
-            // Passer la console en UTF-8 pour le symbole Euro
             Console.OutputEncoding = Encoding.UTF8;
 
-            // Déclaration d'une référence capable de pointer vers un
-            // objet de type LigneCmd
-            LigneCmd l1;
+            LigneCmd ligA = new LigneCmd("Parapluie aluminium", 8, 6.25);
+            LigneCmd ligB = new LigneCmd("Briquet gaz", 21, 1.25);
+            LigneCmd ligC = new LigneCmd("Stylo", 10, 0.33);
 
-            // Création d'un objet LigneCmd avec l'opérateur new et stockage
-            // de la référence dans l1
-            l1 = new LigneCmd("gomme", 10, 1.3);
 
-            LigneCmd l2 = new LigneCmd(
-                prixUnitaire : 0.2,
-                quantite : 5,
-                designation: "Crayon"
-            );
 
-            // Problème avec cet objet
-            LigneCmd l3 = new LigneCmd("Bureau", 1000, 50);
+            LigneCmd lig1, lig2, lig3;
+            if ((ligA.PrixUnitaire < ligB.PrixUnitaire) && (ligA.PrixUnitaire < ligC.PrixUnitaire))
+            {
+                // ligA minimum
+                lig1 = ligA;
+                if (ligB.PrixUnitaire < ligC.PrixUnitaire)
+                {
+                    // ligB medium
+                    lig2 = ligB;
+                    // ligC maximum
+                    lig3 = ligC;
+                } else
+                {
+                    // ligC medium
+                    lig2 = ligC;
+                    // ligB maximum
+                    lig3 = ligB;
+                }
+            } else
+            {
+                if ((ligB.PrixUnitaire < ligA.PrixUnitaire) && (ligB.PrixUnitaire < ligC.PrixUnitaire))
+                {
+                    // ligB minimim
+                    lig1 = ligB;
+                    if (ligC.PrixUnitaire < ligA.PrixUnitaire)
+                    {
+                        // ligC medium
+                        lig2 = ligC;
+                        // ligA maximum
+                        lig3 = ligA;
+                    }
+                    else
+                    {
+                        // ligA medium
+                        lig2 = ligA;
+                        // ligC minimum
+                        lig3 = ligC;
+                    }
+                } else
+                {
+                    // C'est ligC le minimum
+                    lig1 = ligC;
 
-            Console.WriteLine(l1.Description());
-            Console.WriteLine(l2.Description());
-            Console.WriteLine(l3.Description());
+                    if (ligB.PrixUnitaire < ligA.PrixUnitaire)
+                    {
+                        // ligB medium
+                        lig2 = ligB;
+                        // ligA maximum
+                        lig3 = ligA;
+                    }
+                    else
+                    {
+                        // ligA medium
+                        lig2 = ligA;
+                        // ligB minimum
+                        lig3 = ligB;
+                    }
+                }
+            }
+
+
+            Console.WriteLine(ligA.DescriptionSimple());
+            Console.WriteLine(ligB.DescriptionSimple());
+            Console.WriteLine(ligC.DescriptionSimple());
+            Console.WriteLine("\n\n\n=============== TRIE ===============\n");
+            Console.WriteLine(lig1.DescriptionSimple());
+            Console.WriteLine(lig2.DescriptionSimple());
+            Console.WriteLine(lig3.DescriptionSimple());
         }
     }
 }
