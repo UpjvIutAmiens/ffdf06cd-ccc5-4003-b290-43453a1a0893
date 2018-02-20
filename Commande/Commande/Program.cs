@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Commande
@@ -15,62 +16,62 @@ namespace Commande
 
 
 
-            LigneCmd lig1, lig2, lig3;
+            LigneCmd ligMinimum, ligMedium, ligMaximum;
             if ((ligA.PrixUnitaire < ligB.PrixUnitaire) && (ligA.PrixUnitaire < ligC.PrixUnitaire))
             {
                 // ligA minimum
-                lig1 = ligA;
+                ligMinimum = ligA;
                 if (ligB.PrixUnitaire < ligC.PrixUnitaire)
                 {
                     // ligB medium
-                    lig2 = ligB;
+                    ligMedium = ligB;
                     // ligC maximum
-                    lig3 = ligC;
+                    ligMaximum = ligC;
                 } else
                 {
                     // ligC medium
-                    lig2 = ligC;
+                    ligMedium = ligC;
                     // ligB maximum
-                    lig3 = ligB;
+                    ligMaximum = ligB;
                 }
             } else
             {
                 if ((ligB.PrixUnitaire < ligA.PrixUnitaire) && (ligB.PrixUnitaire < ligC.PrixUnitaire))
                 {
                     // ligB minimim
-                    lig1 = ligB;
+                    ligMinimum = ligB;
                     if (ligC.PrixUnitaire < ligA.PrixUnitaire)
                     {
                         // ligC medium
-                        lig2 = ligC;
+                        ligMedium = ligC;
                         // ligA maximum
-                        lig3 = ligA;
+                        ligMaximum = ligA;
                     }
                     else
                     {
                         // ligA medium
-                        lig2 = ligA;
+                        ligMedium = ligA;
                         // ligC minimum
-                        lig3 = ligC;
+                        ligMaximum = ligC;
                     }
                 } else
                 {
                     // C'est ligC le minimum
-                    lig1 = ligC;
+                    ligMinimum = ligC;
 
                     if (ligB.PrixUnitaire < ligA.PrixUnitaire)
                     {
                         // ligB medium
-                        lig2 = ligB;
+                        ligMedium = ligB;
                         // ligA maximum
-                        lig3 = ligA;
+                        ligMaximum = ligA;
                     }
                     else
                     {
                         // ligA medium
-                        lig2 = ligA;
+                        ligMedium = ligA;
                         // ligB minimum
-                        lig3 = ligB;
+                        ligMaximum = ligB;
                     }
                 }
             }
@@ -80,9 +81,24 @@ namespace Commande
             Console.WriteLine(ligB.DescriptionSimple());
             Console.WriteLine(ligC.DescriptionSimple());
             Console.WriteLine("\n\n\n=============== TRIE ===============\n");
-            Console.WriteLine(lig1.DescriptionSimple());
-            Console.WriteLine(lig2.DescriptionSimple());
-            Console.WriteLine(lig3.DescriptionSimple());
+            Console.WriteLine(ligMinimum.DescriptionSimple());
+            Console.WriteLine(ligMedium.DescriptionSimple());
+            Console.WriteLine(ligMaximum.DescriptionSimple());
+
+            // Creation de la collection (List)
+            List<LigneCmd> listLigneCmd = new List<LigneCmd>();
+            listLigneCmd.Add(ligA);
+            listLigneCmd.Add(ligB);
+            listLigneCmd.Add(ligC);
+
+
+            // Utilisation des collections
+            listLigneCmd.Sort();
+            Console.WriteLine("\n\n\n=============== TRI COLLECTION ===============\n");
+            foreach (LigneCmd ligCmd in listLigneCmd)
+            {
+                Console.WriteLine(ligCmd.DescriptionSimple());
+            }
         }
     }
 }

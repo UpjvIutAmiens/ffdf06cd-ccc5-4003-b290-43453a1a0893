@@ -3,7 +3,7 @@ using System.Dynamic;
 
 namespace Commande
 {
-    class LigneCmd // Nom complet de la classe Commande.LigneCmd
+    class LigneCmd : IComparable<LigneCmd> // Nom complet de la classe Commande.LigneCmd
     {
         // Création des champs utilisable uniquement à l'intérieur de la classe
         // Les champs privés commencent par _
@@ -72,6 +72,16 @@ namespace Commande
         {
             // Proriété en lecture seul puisque pas de "set"
             get {return  Quantite * PrixUnitaire;}
+        }
+
+        
+        public int CompareTo(LigneCmd ligCmd)
+        {
+            int compare;
+
+            compare = this.PrixUnitaire.CompareTo(ligCmd.PrixUnitaire);
+
+            return compare;
         }
 
         public string Description()
